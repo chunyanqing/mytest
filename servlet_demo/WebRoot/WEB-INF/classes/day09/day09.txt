@@ -1,0 +1,227 @@
+log4j
+	logger for java
+	是一个第三方的，用于帮助记录程序运行日志的工具
+	简化IO操作，
+	能够非常方便的将信息同时写入到不同的存放器appender（文件、控制台...）中
+
+	日志信息：
+		1、访问信息
+		2、异常信息
+		3、......
+		需要永久保存
+		1、数据库：
+			优点：
+				方便检索
+			缺点：
+				当数据量大的时候，效率低
+				技术性要求高
+		2、文件：
+			优点：
+				可移植，对于技术要求低
+			缺点：
+				检索麻烦，代码量大
+
+	结合配置文件使用：
+		这个配置文件有两点要求：
+			1、文件名必须叫 log4j.properties
+			2、文件必须在src下
+
+	配置文件：
+
+		log4j的配置文件  是用来配置
+		A、记录器(logger)的级别(level)
+		B、存放器 appender
+		C、布局
+
+		log4j配置文件可以是key=value形式,也可以是xml文件
+		通过配置文件  其实定义了  log4j的运行环境
+
+
+	基本格式
+
+		定义根Logger
+		log4j.rootLogger = [level],appenderA,appenderB........
+
+		定义存放器
+		log4j.appender.存放器名=包名.类名(full qualitified of appender class)
+
+		定义日志信息的格式/布局/layout
+
+		log4j.appender.存放器名.layout = 包名.类名
+							(full qualitified of layout class)
+
+		定义其他信息：
+
+		log4j.appender.存放器名.option名=值
+		log4j.appender.存放器名.布局名.option名=值
+
+
+
+
+	配置项:
+		1、level 日志等级/级别
+			debug: 调试
+			info： 信息
+			warn： 警告
+			error：错误
+			fatal：灾难
+
+			debug < info < warn < error < fatal
+
+			每个级别 对应着 Logger 中的一个方法
+			当且仅当 方法的级别 大于等于 rootLogger或者对应apender的级别的时候
+			日志内容才会被记录
+
+
+		2、appender 日志输出的目的地
+			1、ConsoleAppender 控制台
+			2、FileAppender 文件
+			3、DailyRollingFileAppender 每日滚动文件==>每天产生一个新文件
+			4、RollingFileAppender 滚动文件==>文件达到一定大小的时候产生新文件
+
+		3、layout：布局
+
+			HTMLLayout 以html表格形式进行布局
+			PatternLayout 可以灵活的指定布局模式
+			SimpleLayout 简单布局  包含日志信息和级别  %p - %m
+			TTCCLayout 包含日志产生的时间  线程  类别等信息
+
+		4、存放器的相关配置
+			log4j.appender.存放器名.option名=值
+
+			4-1 ConsoleAppender:
+				Threshold: 指定日志级别
+				ImmediateFlush 值true或者false  是否立即输出 默认值true
+				Target：输出目标  System.out(默认值)/System.err
+
+			4-2 FileAppender
+				Threshold: 指定日志级别
+				ImmediateFlush 值true或者false  是否立即输出 默认值true
+				File: 输出文件的路径(相对/绝对)
+				Append:默认值true 追加
+
+			4-3 RollingFileAppender
+				Threshold: 指定日志级别
+				ImmediateFlush 值true或者false  是否立即输出 默认值true
+				File: 输出文件的路径(相对/绝对)
+				Append:默认值true 追加
+				MaxFileSize:配置文件的大小，当文件达到某个大小的时候自动滚动
+					单位可以是  KB  MB  GB
+
+			4-4 DailyRollingFileAppender
+				Threshold: 指定日志级别
+				ImmediateFlush 值true或者false  是否立即输出 默认值true
+				File: 输出文件的路径(相对/绝对)
+				Append:默认值true 追加
+
+		5、布局相关配置
+			log4j.appender.存放器名.布局名.option名=值
+
+			5-1 PatternLayout:
+				
+				ConversionPattern
+					不只是对patternLayout有效
+
+					输出内容
+					%p  : 优先级
+					%d  : 日期
+						可以自定义日期格式
+						%d{yyyy-MM-dd HH:mm:ss}
+					%r  : 输出 从程序 开始记录日志信息到记录完成所消耗的时间
+					%c  : 日志所属的类全称
+					%t  : 线程名
+					%m  : 日志信息
+					%l  ：日志发生的位置 包名.类名.方法名(类名：行号)
+									day09.Log4JTest.main(Log4JTest.java:11)
+					%L  : 日志所在行号
+					%n  ：换行
+					输出格式
+						可以在%于模式字符之间加上修饰符来控制:
+							最小宽度\最大宽度\对齐方式
+
+					%5p: 输出指定的优先级，最小宽度为5 如果长度小于5 补空格 默认右对齐
+					%-5p: 输出指定的优先级，最小宽度为5 如果长度小于5 "-"指定左对齐
+					%.10d:输出指定的时间，最大宽度为10，超过10
+						将左边的多出的字符串截掉，但是小于10的话，不会补空格
+
+					%20.30c
+					其他内容  原样输出
+
+				使用PatternLayout模拟TTCCLayout
+
+
+
+  一般配置：
+  	1、console
+
+  	2、file（Daily。。。）
+  		Threshold debug
+  	3、file-2
+  		Threshold error
+
+
+
+文件上传
+
+	HTML4：
+
+		form表单文件上传
+			1、form的method 必须是 post
+			2、设置form标签属性  enctype="multipart/form-data"
+				：告诉浏览器，将表单数据以二进制流的形式提交
+				在servlet中，对该二进制流进行处理，拿到想要的数据
+				此时  不再能使用request.getParameter()获取到其他值
+
+
+				上述二进制流的解析比较麻烦
+				而且需要了解http协议
+
+				所以：
+					一般情况下  使用第三方的解析工具 进行解析
+
+					第三方的工具  只做解析功能  不做上传功能
+
+			commons-fileupload.jar
+			commons-io.jar  依赖包
+
+
+			文件上传注意点：
+				1、路径问题
+				2、对文件进行重命名 + 保留原有的名字 + 数据库
+
+				t_annex  附件
+
+					id
+					user_id
+					realPath -- 文件在硬盘上的位置
+					originName -- 文件原有的名字
+
+
+
+
+	HTML5:
+		ajax
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====
+效率：
+	StringBuffer  StringBuilder
+
+1、IO操作
+2、网络
+3、数据库

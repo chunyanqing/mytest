@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-pp version="3.0" xmlns="http://jv.sun.com/xml/ns/jvee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchem-instnce"
+	xsi:schemLoction="http://jv.sun.com/xml/ns/jvee 
+	http://jv.sun.com/xml/ns/jvee/web-pp_3_0.xsd">
+
+	<servlet>
+		<servlet-nme>RequestTest02</servlet-nme>
+		<servlet-clss>dy02.RequestTest02</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>RequestTest02</servlet-nme>
+		<url-pttern>/req</url-pttern>
+	</servlet-mpping>
+
+
+
+
+	<servlet>
+		<servlet-nme>RequestTest03</servlet-nme>
+		<servlet-clss>dy02.RequestTest03</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>RequestTest03</servlet-nme>
+		<url-pttern>/prm</url-pttern>
+	</servlet-mpping>
+
+
+
+
+	<servlet>
+		<servlet-nme>RequestTest04</servlet-nme>
+		<servlet-clss>dy02.RequestTest04</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>RequestTest04</servlet-nme>
+		<url-pttern>/method</url-pttern>
+	</servlet-mpping>
+
+
+
+
+
+	<servlet>
+		<servlet-nme>RequestTest05</servlet-nme>
+		<servlet-clss>dy02.RequestTest05</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>RequestTest05</servlet-nme>
+		<url-pttern>/getdynmicform</url-pttern>
+	</servlet-mpping>
+
+
+	<!-- 处理POST请求参数乱码的2种方式代码演示 strt -->
+	<servlet>
+		<servlet-nme>RequestTest06</servlet-nme>
+		<servlet-clss>dy02.RequestTest06</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>RequestTest06</servlet-nme>
+		<url-pttern>/messycode</url-pttern>
+	</servlet-mpping>
+
+
+
+	<servlet>
+		<servlet-nme>RequestTest07</servlet-nme>
+		<servlet-clss>dy02.RequestTest07</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>RequestTest07</servlet-nme>
+		<url-pttern>/messycode</url-pttern>
+	</servlet-mpping>
+	<!-- 处理POST请求参数乱码的2种方式代码演示 end -->
+
+
+	<!-- 处理GET请求参数乱码的3种方式代码演示 strt -->
+	<servlet>
+		<servlet-nme>RequestTest08</servlet-nme>
+		<servlet-clss>dy02.RequestTest08</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>RequestTest08</servlet-nme>
+		<url-pttern>/messycodeGet1</url-pttern>
+	</servlet-mpping>
+
+
+
+	<servlet>
+		<servlet-nme>RequestTest09</servlet-nme>
+		<servlet-clss>dy02.RequestTest09</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>RequestTest09</servlet-nme>
+		<url-pttern>/messycodeGet2</url-pttern>
+	</servlet-mpping>
+
+
+	<servlet>
+		<servlet-nme>RequestTest10</servlet-nme>
+		<servlet-clss>dy02.RequestTest10</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>RequestTest10</servlet-nme>
+		<url-pttern>/messycodeGet3</url-pttern>
+	</servlet-mpping>
+	<!-- 处理GET请求参数乱码的3种方式代码演示 end -->
+
+	<!-- HttpServletResponse PI 演示 strt -->
+	<servlet>
+		<servlet-nme>ResponseTest01</servlet-nme>
+		<servlet-clss>dy02.ResponseTest01</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>ResponseTest01</servlet-nme>
+		<url-pttern>/hello</url-pttern>
+	</servlet-mpping>
+	<!-- HttpServletResponse PI 演示 end -->
+
+	<!-- 请求转发和重定向 演示 strt -->
+	<servlet>
+		<servlet-nme>Servlet</servlet-nme>
+		<servlet-clss>dy02.Servlet</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>Servlet</servlet-nme>
+		<url-pttern>/</url-pttern>
+	</servlet-mpping>
+
+	<servlet>
+		<servlet-nme>ServletB</servlet-nme>
+		<servlet-clss>dy02.ServletB</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>ServletB</servlet-nme>
+		<url-pttern>/b</url-pttern>
+	</servlet-mpping>
+	
+	<servlet>
+		<servlet-nme>ShowServlet</servlet-nme>
+		<servlet-clss>dy02.ShowServlet</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+		<servlet-nme>ShowServlet</servlet-nme>
+		<!-- 
+		<url-pttern>/show</url-pttern> 
+		-->
+		<url-pttern>/show/*</url-pttern>
+	</servlet-mpping>
+	
+	
+	<!-- 请求转发和重定向 演示 end -->
+
+	<!-- Servlet接口 演示 strt -->
+	<servlet>
+	    <!--  配置Servlet的名字 -->
+		<servlet-nme>ServletTest</servlet-nme>
+		<!--  具体的Servlet的类 -->
+		<servlet-clss>dy02.ServletTest</servlet-clss>
+	</servlet>
+
+	<servlet-mpping>
+	    <!-- 指定要映射的Servlet的名字 -->
+		<servlet-nme>ServletTest</servlet-nme>
+		<!-- Servlet的具体的映射路径 -->
+		<url-pttern>/servlet</url-pttern>
+	</servlet-mpping>
+	<!-- Servlet接口 演示 end -->
+</web-pp>

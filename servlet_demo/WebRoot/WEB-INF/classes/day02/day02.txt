@@ -1,0 +1,89 @@
+在项目中途更换jar需要注意:
+	必须将项目从tomcat中先remove,在重新部署方能生效
+	
+	
+乱码问题
+	请求乱码
+		post
+			request.setCharacterEncoding("utf-8")
+			告诉容器(tomcat),解析请求中的数据时使用utf-8的编码
+		
+		get
+			第一种方式:
+			s = new String(s.getBytes("ISO8859-1"),"UTF-8");
+			tomcat默认使用的字符集是ISO8859-1
+			我们可以手动将ISO8859-1转换成UTF-8
+			
+			第二种方式:
+			改变tomcat配置,将其默认字符集改为UTF-8
+			URIEncoding=utf-8
+			
+			
+	响应
+		response.setContentType("text/html;charset=utf-8")
+		告诉容器,响应数据的格式是html文本,字符编码是UTF-8
+		以utf-8的编码传输给客户端,告诉浏览器以utf-8的编码解析响应数据,并打开
+		
+	数据库乱码
+		?useUnicode=true&characterEncoding=utf-8
+	
+	java代码乱码
+	
+	.....
+		
+响应重定向
+	response.sendRedirect(重定向的url地址)		
+	重定向还能跨域访问
+	
+		
+状态码
+	200		成功
+	302		重定向的状态码
+	404		资源未找到
+	500		出现异常
+	405		请求方式不对
+	
+绝对路径以及相对路径
+	相对路径
+		相对于浏览器地址兰的位置	
+		太麻烦,不建议使用
+		
+	绝对路径
+		以/开头,表示的是端口号后面的/
+		/开始属于根目录,后面有几层写几层,紧跟着/一般是自定义应用名
+		
+request常用方法
+	    //获取部署到服务器上的应用名
+		String contextPath = request.getContextPath();
+		System.out.println("自定义应用名:"+contextPath);
+		
+		//获取到url-pattern,也就是servlet请求名
+		String servletPath = request.getServletPath();
+		System.out.println("servletPath:"+servletPath);
+		
+		//相当于contextPath+servletPath
+		String uri = request.getRequestURI();
+		System.out.println("uri:"+uri);
+		
+		//请求的URL地址
+		String url = request.getRequestURL().toString();
+		System.out.println("url:"+url);
+		
+		//获取访问者的ip地址
+		String ip = request.getRemoteAddr();
+		System.out.println("ip:"+ip);
+		
+		//获取客户端的请求方式
+		String method = request.getMethod();
+		System.out.println("method:"+method);
+		
+		request.getParameter(key):根据key获取对应的请求参数,返回值是一个String
+		request.getParameterValues(key):根据key获取对应的请求参数,返回值是一个数组
+		
+		request.getParameterMap():获取所有表单中的数据,以key-value的形式体现
+		
+		单选框以及多选框,如果没有选中任何选项,则提交时并没有提交相关的key值
+		文本框等就算没有输入数据,其实默认是有一个空字符串,因此并不是没有值,所以key-value是存在的
+		
+		
+			

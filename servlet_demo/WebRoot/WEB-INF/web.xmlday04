@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <!-- JSP内置对象application start -->
+    <context-param>
+        <param-name>itany</param-name>
+        <param-value>www.itany.com</param-value>
+    </context-param>
+    
+	<servlet>
+		<servlet-name>ApplicationTest</servlet-name>
+		<servlet-class>day04.ApplicationTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApplicationTest</servlet-name>
+		<url-pattern>/servlet/ApplicationTest</url-pattern>
+	</servlet-mapping>
+    <!-- JSP内置对象application end -->
+    
+
+	<!--JSP内置对象PageContext演示 start -->
+	<servlet>
+		<servlet-name>PageContextTest</servlet-name>
+		<servlet-class>day04.PageContextTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PageContextTest</servlet-name>
+		<url-pattern>/servlet/PageContextTest</url-pattern>
+	</servlet-mapping>
+	<!-- JSP内置对象PageContext演示 end -->
+
+
+	<!--JSP内置对象session演示 start -->
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>day04.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/servlet/login</url-pattern>
+	</servlet-mapping>
+	<!-- JSP内置对象session演示 end -->
+
+	<!-- JSP内置对象session的获取演示 start -->
+	<servlet>
+		<servlet-name>Register1Servlet</servlet-name>
+		<servlet-class>day04.Register1Servlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Register1Servlet</servlet-name>
+		<url-pattern>/servlet/Register1Servlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Register2Servlet</servlet-name>
+		<servlet-class>day04.Register2Servlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Register2Servlet</servlet-name>
+		<url-pattern>/servlet/Register2Servlet</url-pattern>
+	</servlet-mapping>
+	<!-- JSP内置对象session的获取演示 end -->
+
+	<!-- cookie演示 start -->
+	<servlet>
+		<servlet-name>CookieServlet</servlet-name>
+		<servlet-class>day04.CookieServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CookieServlet</servlet-name>
+		<!-- 只要是cookie开头后面可以是任意东西 -->
+		<url-pattern>/servlet/cookie/*</url-pattern>
+	</servlet-mapping>
+	<!-- cookie演示 end -->
+
+    <!-- 使用cookie进行分布用户注册演示 start -->
+	<servlet>
+		<servlet-name>Register1ServletCook</servlet-name>
+		<servlet-class>day04.Register1ServletCook</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Register1ServletCook</servlet-name>
+		<url-pattern>/servlet/Register1ServletCook</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Register2ServletCook</servlet-name>
+		<servlet-class>day04.Register2ServletCook</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Register2ServletCook</servlet-name>
+		<url-pattern>/servlet/Register2ServletCook</url-pattern>
+	</servlet-mapping>
+    <!-- 使用cookie进行分布用户注册演示 end -->
+    
+    
+    <!-- cookie中保存中文问题演示 start -->
+	<servlet>
+		<servlet-name>CookieChinese</servlet-name>
+		<servlet-class>day04.CookieChinese</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CookieChinese</servlet-name>
+		<url-pattern>/servlet/CookieChinese</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GetCookieServlet</servlet-name>
+		<servlet-class>day04.GetCookieServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GetCookieServlet</servlet-name>
+		<url-pattern>/servlet/GetCookieServlet</url-pattern>
+	</servlet-mapping>
+    <!--  cookie中保存中文问题演示 end -->
+    
+    <!-- 使用cookie实现7天免费登录  start -->
+    <servlet>
+ 		<servlet-name>usLogin</servlet-name>
+ 		<servlet-class>day04.UserLoginServlet</servlet-class>
+ 	</servlet>
+ 
+ 	<servlet-mapping>
+ 		<servlet-name>usLogin</servlet-name>
+ 		<url-pattern>/userLogin</url-pattern>
+ 	</servlet-mapping>
+    <!-- 使用cookie实现7天免费登录  end -->
+</web-app>
+

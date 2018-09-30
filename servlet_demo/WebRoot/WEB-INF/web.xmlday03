@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<!-- Servlet生命周期演示 start -->
+	<servlet>
+	    <!--  配置Servlet的名字 -->
+		<servlet-name>serlife</servlet-name>
+		<!--  具体的Servlet的类 -->
+		<servlet-class>day03.ServletLife</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <!-- 指定要映射的Servlet的名字 -->
+		<servlet-name>serlife</servlet-name>
+		<!-- Servlet的具体的映射路径 -->
+		<url-pattern>/servletlife</url-pattern>
+	</servlet-mapping>
+	<!-- Servlet生命周期演示 end -->
+	
+	
+	
+	<!-- ServletConfig演示 start -->
+	<servlet>
+		<servlet-name>ServletConfigTest</servlet-name>
+		<servlet-class>day03.ServletConfigTest</servlet-class>
+		<init-param>
+		    <param-name>username</param-name>
+		    <param-value>123456</param-value>
+		</init-param>
+		<init-param>
+		    <param-name>password</param-name>
+		    <param-value>111111</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServletConfigTest</servlet-name>
+		<url-pattern>/servlet/ServletConfigTest</url-pattern>
+	</servlet-mapping>
+	<!--  ServletConfig演示 end -->
+	
+	
+	<!-- ServletContext演示 start -->
+	<servlet>
+	    <!--  配置Servlet的名字 -->
+		<servlet-name>ServletContextTest</servlet-name>
+		<!--  具体的Servlet的类 -->
+		<servlet-class>day03.ServletContextTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <!-- 指定要映射的Servlet的名字 -->
+		<servlet-name>ServletContextTest</servlet-name>
+		<!-- Servlet的具体的映射路径 -->
+		<url-pattern>/servlet/servletContextTest</url-pattern>
+	</servlet-mapping>
+	<!-- ServletContext演示 end -->
+	
+	<!-- 请求转发和响应重定向 的绝对路径和相对路径演示  start-->
+	<servlet>
+ 		<servlet-name>serA</servlet-name>
+ 		<servlet-class>day03.TestServletA</servlet-class>
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>serA</servlet-name>
+ 		<!-- <url-pattern>/serA</url-pattern> -->
+ 		<url-pattern>/s/serA</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	
+ 	<servlet>
+ 		<servlet-name>serB</servlet-name>
+ 		<servlet-class>day03.TestServletB</servlet-class>
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>serB</servlet-name>
+ 		<url-pattern>/serB</url-pattern>
+ 	</servlet-mapping>
+ 	<!-- 请求转发和响应重定向 的绝对路径和相对路径演示演示    end -->
+</web-app>
+

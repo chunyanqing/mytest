@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+  <!--定义一个servlet,为一个servlet取一个唯一的名字 -->
+  <servlet>
+    <!-- 为一个servlet取一个唯一的名字 -->
+    <servlet-name>HelloWorld</servlet-name>
+    <!-- 指定这个servlet的包名.类名 -->
+    <servlet-class>day01.HelloWorld</servlet-class>
+  </servlet>
+
+  <!--servlet的映射 -->
+  <servlet-mapping>
+    <!--要映射的servlet的name -->
+    <servlet-name>HelloWorld</servlet-name>
+    <!--映射到什么路径==》浏览器访问什么路径执行该servlet -->
+    <url-pattern>/servlet/HelloWorld</url-pattern>
+  </servlet-mapping>	
+
+</web-app>

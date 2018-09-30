@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+    
+  <tlib-version>1.1</tlib-version>
+  <!-- 一般和文件名一致 -->
+  <short-name>myTag</short-name>
+  <uri>/myTag</uri>
+
+  <tag>
+  	<!-- 标签名 -->
+    <name>msg</name>
+    <!-- 自定义标签所对应的方法所在的类的路径 -->
+    <tag-class>day09.MyTag</tag-class>
+    <!-- 表示标签体中的内容(2个标签之间的内容),如果没有内容,就是empty -->
+    <body-content>empty</body-content>
+    <attribute>
+        <name>info</name>
+        <!-- 该属性是否必须赋值 -->
+        <required>true</required>
+        <!-- 该属性是否允许使用el表达式 -->
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>num</name>
+        <!-- 该属性是否必须赋值 -->
+        <required>true</required>
+        <!-- 该属性是否允许使用el表达式 -->
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+</taglib>

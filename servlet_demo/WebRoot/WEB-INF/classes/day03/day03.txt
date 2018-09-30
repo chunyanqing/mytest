@@ -1,0 +1,118 @@
+通配符的使用
+	url-pattern
+		/xxx/*:例如/find/*,只要地址是/find/开头的,后面随便写什么都能访问到
+		*.xxx:例如*.do,只要是以.do结尾的命令,都能访问到
+		
+servlet基本方法
+	//初始化方法,默认第一次访问时执行
+	public void init(ServletConfig arg0)
+	//服务方法,客户端发送请求访问当前的servlet时执行
+	public void service(ServletRequest arg0, ServletResponse arg1)
+	//销毁方法,服务停止时执行
+	public void destroy() 
+	public ServletConfig getServletConfig() 
+	public String getServletInfo() 
+
+servlet生命周期
+	1.创建servlet实例
+		由服务器创建(不需要用户去new)
+	
+	2.初始化方法
+		默认第一次访问时自动执行
+		可以改变执行时间
+		load-on-startup表示在服务器启动时执行init方法
+		值是一个数字,值越小,优先级越高
+		
+		
+	3.service
+		当请求到达时执行service方法或者doPost(doGet)方法
+		当方法中有service的时候,优先执行
+		当方法中没有service的时候,会根据请求方式进入对应的doPost或者doGet方法
+		
+		
+	4.destory
+		销毁方法
+		当服务器停止时自动调用该方法		
+	
+	
+	GenericServlet抽象类
+		实现了servlet接口中的部分功能
+		实现了init以及destory方法,并且添加了一个无参的init方法
+	
+	
+	HttpServlet抽象类
+		实现了service方法
+		添加了三个方法
+			service(HttpServletRequest request,HttpServletResponse response)
+			doPost
+			doGet
+	
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+JSP
+	jsp就是servlet
+	java server page	
+	
+
+	作用
+		简化页面的开发
+		它主要是由html代码以及java代码、jsp标签组成
+		可以在html中插入java程序的代码和jsp标签
+		html是运行在客户端的
+		jsp是运行在服务器
+		是一种动态的页面生成技术
+		
+		
+	jsp一般用作显示逻辑
+	servlet一般用作业务逻辑
+
+
+
+	jsp指令
+		<%@指令名 属性名="属性值" %>
+
+
+	jsp页面中的内容
+	html代码		------->	out.print(html代码)
+	<%@..%>		------->	影响生成servlet时的源代码
+	<%java代码%>	------->	直接将java代码放入到生成的servlet中,放入到service方法所对应的上下文的位置
+	<%java代码%>	------->	相当于out.pint(java代码)
+	<%!java代码%>	------->	直接将java代码放入到servlet类体中
+	
+
+	jsp运行机制
+		当请求到达服务器时,访问一个jsp	
+		服务器将一个jsp文件转换成了一个java文件
+		转换是由服务器上的jsp引擎完成
+		然后自动编译
+		最后调用和执行的实际上就是这个转换后的servlet的字节码文件
+		
+	员工管理系统
+	
+	
+	请求转发
+		一个jsp/servlet将未完成的功能交给另外一个jsp/servlet来处理
+		他们两个组件共享request和response
+		request.getRequestDispatcher("").forward(request, response);
+		
+		特点:
+			地址栏不会改变
+			不能跨域,在转发时系统默认在路径中自动加上了当前的应用名,因此不需要重复输入应用名
+			可以访问WEB-INF下的资源
+	
+	转发与重定向的区别
+		重定向
+			地址栏会发生变化,相当于重新访问了一次请求
+			可以跨域
+			不能访问WEB-INF下的资源
+		转发
+			服务器内部控制权的转移,因此地址栏不会发生变化
+			不可以跨域
+			可以访问WEB-INF下的资源
+			转发所涉及的组件均共享request和response
+	
+			
+			

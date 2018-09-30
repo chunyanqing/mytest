@@ -1,0 +1,5 @@
+日志信息.....debug day09.Log4jTest.main(Log4jTest.java:14) 
+日志信息.....info day09.Log4jTest.main(Log4jTest.java:15) 
+日志信息.....warn day09.Log4jTest.main(Log4jTest.java:16) 
+日志信息.....error day09.Log4jTest.main(Log4jTest.java:17) 
+日志信息.....fatal day09.Log4jTest.main(Log4jTest.java:18) 

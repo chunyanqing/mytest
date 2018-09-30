@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<!--过滤器演示 start -->
+	<!-- 配置Servlet -->
+	<servlet>
+	    <servlet-name>HelloServlet</servlet-name>
+	    <servlet-class>day07.HelloServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>HelloServlet</servlet-name>
+	    <url-pattern>/servlet/HelloServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 配置过滤器 -->
+	<filter>
+	    <filter-name>HelloFilter</filter-name>
+	    <filter-class>day07.HelloFilter</filter-class>
+	</filter>
+	
+    <filter-mapping>
+		<filter-name>HelloFilter</filter-name>
+	    <!-- 
+	                   拦截范围:
+	          1. 完全目录匹配    以/开头 例如 /aaa      /aaa/bbb
+	          2. 目录匹配            以/开头  例如 /aaa/*    /*
+	          3. 扩展名匹配        不能 以/开头 例如  *.do   *.action
+	    -->
+		<url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--过滤器演示 end -->
+    
+    <!-- 过滤器生命周期和FilterConfig演示 start -->
+    <filter>
+	    <filter-name>HelloFilter2</filter-name>
+	    <filter-class>day07.HelloFilter2</filter-class>
+	    
+	    <init-param>
+			<param-name>encode</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>paramName1</param-name>
+			<param-value>paramValue1</param-value>
+		</init-param>
+		
+	</filter>
+    <filter-mapping>
+		<filter-name>HelloFilter2</filter-name>
+		<url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <servlet>
+	    <servlet-name>HelloServlet2</servlet-name>
+	    <servlet-class>day07.HelloServlet2</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	    <servlet-name>HelloServlet2</servlet-name>
+	    <url-pattern>/servlet/HelloServlet2</url-pattern>
+	</servlet-mapping>
+    <!-- 过滤器生命周期和FilterConfig演示 end -->
+    
+    
+    <!-- 配置ServletContext监听器 start -->
+    <listener>
+         <!-- 监听器配置只要指定<listener-class>即可 -->
+         <listener-class>
+             day07.MyServletContextListener
+         </listener-class>
+    </listener>
+    <!-- 配置ServletContext监听器 end -->
+    
+    <!-- 监听器   统计在线人数 start -->
+    <listener>
+		<listener-class>
+		    day07.MySessionListener
+		</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>
+		    day07.MyServletContextListener2
+		</listener-class>
+	</listener>
+	<!-- 监听器   统计在线人数 end -->
+	
+	<!-- 监听器  start -->
+	<listener>
+		<listener-class>day07.MyListener</listener-class>
+	</listener>
+	<!-- 监听器  end -->
+	
+	
+</web-app>
+
